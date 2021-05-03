@@ -11,30 +11,23 @@
 		<h3 class="text-center">Subir Imagen</h3>
 	</div>
 
-	<x-forms>
-		<div class="card col-md-10 mx-auto justify-content-center justify-items-center mt-4">
-			<div class="card-header">
-				<input type="file" name="file" id="img" class="form-control">
-			</div>
+	<x-forms method="put" :action="route('images.store')" enctype="multipart/form-data">
+		<x-slot name="cardHeader">
+			<input type="file" name="file" id="img" class="form-control">
+		</x-slot>
 
-			 <div class="card-body">
-				<div class="row">
-					<div class="col-md-6">
-			  			<div class="bg-image hover-overlay ripple" id="prevImg" data-mdb-ripple-color="light"></div>
-					</div>
+		<x-slot name="cardBody">
+			<div class="row">
+				<div class="col-md-6">
+			  		<div class="bg-image hover-overlay ripple" id="prevImg" data-mdb-ripple-color="light"></div>
+				</div>
 
-					<div class="col-md-6">
-			   			<textarea name="description" class="form-control"  rows="10"></textarea>
-					</div>
-			  	</div>
+				<div class="col-md-6">
+			   		<textarea name="description" class="form-control"  rows="10"></textarea>
+				</div>
 			</div>
-
-			<div class="card-footer">
-				<button type="submit" class="btn btn-primary"> Subir Imagen </button>
-			</div>
-		</div>
+		</x-slot>
 	</x-forms>
-
 
 
 <script src="{{ asset('js/prevImg.js') }}"></script>
