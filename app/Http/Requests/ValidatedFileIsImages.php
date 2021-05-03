@@ -24,7 +24,8 @@ class ValidatedFileIsImages extends FormRequest
     public function rules()
     {
         return [
-            'file' => "required|image|max:2048"
+            'file' => "required|image|max:2048",
+            'description' => "required|max:100"
         ];
     }
 }

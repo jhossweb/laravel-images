@@ -29,13 +29,17 @@ class ImagesController extends Controller
       $ruta = storage_path() . '\app\public\images/' . $nombre;
 
       Image::make($request->file('file'))
-                           ->resize(1200, null, function ($constraint) {
+                           ->resize(720, null, function ($constraint) {
                                $constraint->aspectRatio();
       })
       ->save($ruta);
 
-      Images::create(["url" => '/storage/images/' . $nombre]);
+      Images::create([
+         "url" => '/storage/images/' . $nombre,
+         "description" => $request['description']
+      ]);
    	 return redirect()->route('images.index');
+
    }
 
    public function show (Images $images)
