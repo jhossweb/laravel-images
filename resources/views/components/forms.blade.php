@@ -19,7 +19,7 @@
 			</div>
 
 			<div class="card-footer">
-				<button type="submit" class="btn btn-primary"> Subir Imagen </button>
+				{{ $cardFooter }}
 			</div>
 		</div>
 </form>

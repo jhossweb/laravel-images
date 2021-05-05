@@ -32,7 +32,7 @@
 				              	<p class="card-text">
 				              		{{ $img->description }}
 				              	</p>
-				              	<div class="d-flex justify-content-between align-items-center row col-sm-12">
+				              	<div class="d-flex justify-content-between align-items-center col-sm-12">
 				                	<div class="btn-group">
 				                  		<a href="{{ route('images.show', $img->id) }}" type="button" class="btn btn-sm btn-outline-secondary"> Editar </a>
 				                  		<button type="button" class="btn btn-sm btn-outline-secondary"> Eliminar </button>

@@ -11,7 +11,7 @@
 		<h3 class="text-center">Subir Imagen</h3>
 	</div>
 
-	<x-forms method="put" :action="route('images.store')" enctype="multipart/form-data">
+	<x-forms method="post" :action="route('images.store')" enctype="multipart/form-data">
 		<x-slot name="cardHeader">
 			<input type="file" name="file" id="img" class="form-control">
 		</x-slot>
@@ -26,6 +26,10 @@
 			   		<textarea name="description" class="form-control"  rows="10"></textarea>
 				</div>
 			</div>
+		</x-slot>
+
+		<x-slot name="cardFooter">
+			<button type="submit" class="btn btn-primary"> Subir Imagen </button>
 		</x-slot>
 	</x-forms>
 

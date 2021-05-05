@@ -52,8 +52,24 @@ class ImagesController extends Controller
       return view('images.edit', compact('images'));
    }
 
-   public function update (Request $request)
+   public function update (Request $request, Images $images)
    {
-      return $request->all();
+      // Optiminzar imagenes para subirlas
+      $nombre = Str::random(10) . $request->file('file')->getClientOriginalName();
+      $ruta = storage_path() . '\app\public\images/' . $nombre;
+
+      Image::make($request->file('file'))
+                           ->resize(720, null, function ($constraint) {
+                               $constraint->aspectRatio();
+      })
+      ->save($ruta);
+
+      $images->where('id', $request->id)
+                     ->update([
+                        "url" => '/storage/images/' . $nombre,
+                        "description" => $request['description']
+                     ]);
+
+       return redirect()->route('images.show', $images);
    }
 }
