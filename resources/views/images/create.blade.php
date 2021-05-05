@@ -30,6 +30,7 @@
 
 		<x-slot name="cardFooter">
 			<button type="submit" class="btn btn-primary"> Subir Imagen </button>
+			<a href="{{ route('images.index') }}" class="btn btn-secundary">Inicio</a>
 		</x-slot>
 	</x-forms>
 
