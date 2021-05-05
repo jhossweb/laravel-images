@@ -18,6 +18,9 @@ class CreateImagesTable extends Migration
             $table->string('url');
             $table->text('description', 100);
 
+            $table->unsignedBigInteger('categoria_id')->nullable();
+            $table->foreign('categoria_id')->references('id')->on('categorias')->onDelete('set null');
+
             $table->timestamps();
         });
     }
