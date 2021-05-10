@@ -9,5 +9,10 @@ class Images extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['url', "description"];
+    protected $fillable = ['url', "description", "categoria_id"];
+
+     public function categoria()
+    {
+        return $this->belongsTo('App\Models\Categoria');
+    }
 }

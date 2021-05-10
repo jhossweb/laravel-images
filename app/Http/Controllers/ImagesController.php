@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ValidatedFileIsImages;
+use App\Models\Categoria;
 use App\Models\Images;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage; //Cambio de Ruta
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image; // Optimiza la carga de imagenes
+
 
 class ImagesController extends Controller
 {
@@ -19,10 +21,11 @@ class ImagesController extends Controller
 
    public function create()
    {
-   		return view('images.create');
+      $categoys = Categoria::all();
+   	return view('images.create', compact('categoys'));
    }
 
-   public function store (ValidatedFileIsImages $request)
+   public function store (Request $request)
    {
       // Optiminzar imagenes para subirlas
       $nombre = Str::random(10) . $request->file('file')->getClientOriginalName();
@@ -36,10 +39,10 @@ class ImagesController extends Controller
 
       Images::create([
          "url" => '/storage/images/' . $nombre,
-         "description" => $request['description']
+         "description" => $request['description'],
+         "categoria_id" => $request['category']
       ]);
    	 return redirect()->route('images.index');
-
    }
 
    public function show (Images $images)

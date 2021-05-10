@@ -26,6 +26,13 @@
 			   		<textarea name="description" class="form-control"  rows="10"></textarea>
 				</div>
 			</div>
+
+
+			<select name="category" id="">
+				@foreach ($categoys as $cateogry)
+					<option value="{{ $cateogry->id }}"> {{ $cateogry->name }} </option>
+				@endforeach
+			</select>
 		</x-slot>
 
 		<x-slot name="cardFooter">

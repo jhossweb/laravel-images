@@ -27,7 +27,7 @@
 			       	<div class="col">
 				        <div class="card shadow-sm">
 				            <img src="{{ asset($img->url) }}" alt="" width="100%" height="100px" class="img-fluid img-card">
-
+				            	{{ $img->categoria->name }}
 				            <div class="card-body">
 				              	<p class="card-text">
 				              		{{ $img->description }}
