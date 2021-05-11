@@ -75,4 +75,15 @@ class ImagesController extends Controller
 
        return redirect()->route('images.show', $images);
    }
+
+   public function destroy (Images $images)
+   {
+      /* Eliminar imagen del servidor */
+      $url = str_replace('storage', 'public', $images->url);
+      Storage::delete($url);
+
+      /* Eliminar la ruta de la base de datos */
+      $images->delete();
+      return redirect()->route('images.index');
+   }
 }
