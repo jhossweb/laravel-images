@@ -13,6 +13,11 @@
 	        {{-- botones para registrar con redes sociales --}}
 	        <p>
 	          <a href="{{ route('images.create') }}" class="btn btn-primary my-2"> Subir Imagen </a>
+
+	          <x-form method="put" :action="route('categoria.show')">
+	         	<x-select :categorias="$categorias" name="categorias" />
+	          </x-form>
+
 	        </p>
 	      </div>
 	    </div>
@@ -22,29 +27,29 @@
 	<x-album>
 	    @foreach ($imgs as $img)
 
-	      	<div class="col">
-		        <div class="card shadow-sm">
-		            <img src="{{ asset($img->url) }}" alt="" width="100%" height="100px" class="img-fluid img-card">
-		            <div class="card-body">
-		            	<a href=""> {{ $img->categoria->name }} </a>
-		              	<p class="card-text">
-		              		{{ $img->description }}
-		              	</p>
-		              	<div class="d-flex justify-content-between align-items-center col-sm-12">
-		                	<div class="btn-group">
-		                  		<a href="{{ route('images.show', $img->id) }}" type="button" class="btn btn-sm btn-outline-secondary"> Ver </a>
-		                  		<form action="{{ route('images.destroy', $img) }}" method="POST">
-		                  			@csrf @method("delete")
-		                  			<button type="submit" class="btn btn-sm btn-outline-secondary"> Eliminar </button>
-		                  		</form>
-		                	</div>
-		                	<small class="text-muted text-center">{{ $img->created_at->diffForHumans() }}</small>
-		              	</div>
-		            </div>
-		        </div>
+			<x-slot name="slotImg">
+		       	<img src="{{ asset($img->url) }}" alt="" width="100%" height="100px" class="img-fluid img-card">
+		    </x-slot>
+
+		    <x-slot name="slot_category">
+		    	<a href=""> {{ $img->categoria->name }} </a>
+		    </x-slot>
+
+		    <x-slot name="slotDescription">
+		    	{{ $img->description }}
+		    </x-slot>
+
+		    <div class="btn-group">
+		        <a href="{{ route('images.show', $img->id) }}" type="button" class="btn btn-sm btn-outline-secondary"> Ver </a>
+		        <form action="{{ route('images.destroy', $img) }}" method="POST">
+		        	@csrf @method("delete")
+		        	<button type="submit" class="btn btn-sm btn-outline-secondary"> Eliminar </button>
+		        </form>
 		    </div>
+		    <small class="text-muted text-center">{{ $img->created_at->diffForHumans() }}</small>
+
 		@endforeach
-	 </x-album>
+	</x-album>
 
 
 

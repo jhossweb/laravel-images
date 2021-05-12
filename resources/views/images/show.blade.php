@@ -30,7 +30,7 @@
 	          	</p>
 	          	<div class="mt-4">
 		          	<a href="{{ route('images.edit', $images) }}" class="btn btn-primary">Editar</a>
-		          	<a href="" class="btn btn-secondary">Inicio</a>
+		          	<a href="{{ route('images.index') }}" class="btn btn-secondary">Inicio</a>
 	          	</div>
         	</div>
      	</div>
