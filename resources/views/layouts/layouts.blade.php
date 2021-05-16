@@ -11,7 +11,7 @@
 
 	@include('layouts.partials.header')
 
-	<div class="container">
+	<div class="">
 		{{-- CONTENT --}}
 		@yield('content')
 	</div>

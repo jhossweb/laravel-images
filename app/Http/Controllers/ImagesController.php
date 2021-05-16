@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ValidatedFileIsImages;
-use App\Models\Categoria;
 use App\Models\Images;
+use App\Models\Categoria;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -16,8 +16,8 @@ class ImagesController extends Controller
    public function index()
    {
       $imgs = Images::all();
-      $categorias = Categoria::all();
-   	return view('images.index', compact('imgs', 'categorias'));
+      $categories = Categoria::all();
+   	return view('images.index', compact('imgs', 'categories'));
    }
 
    public function create()
@@ -86,5 +86,13 @@ class ImagesController extends Controller
       /* Eliminar la ruta de la base de datos */
       $images->delete();
       return redirect()->route('images.index');
+   }
+
+
+   public function categoria (Categoria $categorias)
+   {
+      $imgs = Images::where('categoria_id', $categorias->id)->get();
+      $categories = Categoria::all();
+      return view('images.categoria', compact('imgs', 'categorias', 'categories'));
    }
 }

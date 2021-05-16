@@ -4,10 +4,11 @@ use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ImagesController;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/', function(){
+	return view('home');
+});
 
 // Rutas para imagenes
 Route::resource('images', ImagesController::class)->parameters(['images' => 'images']);
 
-
-// Rutas para categorias
-Route::get('/categorias', [CategoriaController::class, "show"])->name('categoria.show');
+Route::get('categoria/{categorias}', [ImagesController::class, 'categoria'])->name('images.categoria');
