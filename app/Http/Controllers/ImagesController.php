@@ -13,6 +13,9 @@ use Intervention\Image\Facades\Image; // Optimiza la carga de imagenes
 
 class ImagesController extends Controller
 {
+
+
+
    public function index()
    {
       $imgs = Images::all();

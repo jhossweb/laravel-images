@@ -16,7 +16,7 @@
         	</div>
         	<div class="col col-12 col-sm-12 col-md-4 p-4 d-md-block d-lg-block">
 	          	Categoria: <strong class="d-inline-block mb-2 text-primary">
-	          		<a href=""> {{ $images->categoria->name }} 	</a>
+	          		<a href="{{ route('images.categoria', $images->categoria_id) }}"> {{ $images->categoria->name }} 	</a>
 	          	</strong>
 
 	          	<div class="mb-1 text-muted">

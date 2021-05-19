@@ -1,6 +1,6 @@
 <div class="album col-lg-10 py-5 bg-light">
   <div class="container">
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+    <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3">
       @foreach ($galerys as $galery)
 
         <div class="col">
@@ -12,9 +12,12 @@
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
                     <a href="{{ route('images.show', $galery) }}" type="button" class="btn btn-sm btn-outline-secondary"> Ver </a>
-                    <a href="{{ route('images.destroy', $galery) }}" type="button" class="btn btn-sm btn-outline-secondary"> Eliminar </a>
+                    <form action="{{ route('images.destroy', $galery) }}" method="post">
+                      @method('delete') @csrf
+                      <button href="" type="submit" class="btn btn-sm btn-outline-secondary"> Eliminar </button>
+                    </form>
                   </div>
-                  <small class="text-muted">9 mins</small>
+                  <small class="text-muted">{{ $galery->created_at->diffForHumans() }}</small>
                 </div>
               </div>
             </div>
