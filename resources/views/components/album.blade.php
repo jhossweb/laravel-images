@@ -1,6 +1,8 @@
 <div class="album col-lg-10 py-5 bg-light">
   <div class="container">
+      <a href="{{ route('images.create') }}" class="btn btn-primary">Subir Imagen</a>
     <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3">
+
       @foreach ($galerys as $galery)
 
         <div class="col">
