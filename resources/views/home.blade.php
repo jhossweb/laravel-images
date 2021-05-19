@@ -10,7 +10,7 @@
 	      <div class="col-lg-6 col-md-8 mx-auto">
 	        <h1 class="fw-light">App De Imágenes</h1>
 	        <p class="lead text-muted">
-	        	Aquí puedes almacenar tus mejores Fotos y Compartirlas en tus Redes Sociales Favoritas
+	        	Aquí puedes almacenar tus mejores Fotos
 	        </p>
 	        <p>
 	          {{-- <a href="{{ route('images.create') }}" class="btn btn-primary my-2"> Subir Imagen </a> --}}
